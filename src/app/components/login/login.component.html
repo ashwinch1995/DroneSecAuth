@@ -1,0 +1,75 @@
+
+<mat-card>
+    <mat-card-title style="color: mediumseagreen; font-weight: 600;">TRUSTDRONE LOGIN</mat-card-title>
+    <br>   
+
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <mat-form-field appearance="fill" style="width: 99%;">
+            <mat-label>Username</mat-label>
+            <input matInput placeholder="abc" formControlName="userName">
+            <mat-error>Please enter a value</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill" style="width: 99%;">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password">
+            <mat-error>Please enter a value</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill" style="width: 99%;" *ngIf="this.tfaFlag">
+            <mat-label>Auth Code</mat-label>
+            <input matInput formControlName="authcode" placeholder="Two-Factor Auth code">
+            <mat-error>Please enter a value</mat-error>
+        </mat-form-field>
+        <br>
+        <button mat-raised-button type="submit" style="background-color: mediumseagreen; margin: 5px;">Login</button>
+    </form>
+
+    <div style="margin-top: 20px;">
+        <mat-card-subtitle *ngIf="incorrectError" class="error">
+            Incorrect Credentials
+        </mat-card-subtitle>
+    </div>
+    <p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
+</mat-card>
+<!-- 
+<div>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <table>
+            <tr>
+                <td>
+                    <label>User Name: </label>        
+                </td>
+                <td>
+                    <input type="text" formControlName="userName">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Password: </label>        
+                </td>
+                <td>
+                    <input type="password" formControlName="password">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit" style="float: right;">Login</button>      
+                </td>
+                <td>
+                    
+                </td>
+            </tr>
+        </table>
+        
+    </form>
+
+    <div>
+        <span *ngIf="reqError" class="error">
+            Please provide all fields
+        </span>
+        <span *ngIf="incorrectError" class="error">
+            Incorrect Credentials
+        </span>
+    </div>
+</div> -->

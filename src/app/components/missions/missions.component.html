@@ -1,0 +1,68 @@
+<!-- <mat-card>
+    <button mat-button style="background-color: mediumseagreen;" (click)="showAddDroneDiv()">Add Drone to Mission</button>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false" *ngFor="let mission of missions">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{mission.missionName}}
+      </mat-panel-title>
+      <mat-panel-description>
+        Currently I am {{panelOpenState ? 'open' : 'closed'}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>Mission ID: {{mission.missionId}}</p>
+    <p>Source Location: {{mission.source}}</p>
+    <p>Destination Location: {{mission.destination}}</p>
+    <p>Drone ID's: {{mission.droneIds}}</p>
+  </mat-expansion-panel>
+</mat-card> -->
+
+<!-- <mat-card *ngIf="showAddDrone"> -->
+<div style="margin-top: 20px;">
+    <mat-card-title style="color: mediumseagreen; font-weight: 600;">Add Drone to a Mission</mat-card-title>
+    <br>
+    <form [formGroup]="droneMissionForm">
+      <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Select Mission</mat-label>
+            
+            <mat-select formControlName="missionId" >              
+                <mat-option *ngFor="let mission of missions" value="mission.missionId">{{mission.missionName}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </p>
+        <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Select Drone</mat-label>
+            <mat-select [formControl]="dronesControl" multiple (selectionChange)="getDroneDetails($event.value)">
+              <mat-select-trigger>
+                {{dronesControl.value ? dronesControl.value[0] : ''}}
+                <span *ngIf="dronesControl.value?.length > 1" class="example-additional-selection">
+                  (+{{dronesControl.value.length - 1}} {{dronesControl.value?.length === 2 ? 'other' : 'others'}})
+                </span>
+              </mat-select-trigger>
+              
+              <mat-option *ngFor="let drone of drones" value="{{drone.model}}">{{drone.manufacturer}} {{drone.model}}</mat-option>
+              <!-- <mat-option value="one">DJI Mavis Air</mat-option>
+              <mat-option value="two">MJX</mat-option>
+              <mat-option value="three">Holy Stone</mat-option> -->
+            </mat-select>
+        </mat-form-field>
+    </p>
+        <div *ngIf="showDroneDetails" style=" display: flex; flex-direction: row;">
+          <mat-card *ngFor="let droneDetail of droneDetails" style="width: 49% !important;" class="mat-elevation-z8">
+            <p>Drone Id: {{droneDetail.droneId}}</p>
+            <p>Model: {{droneDetail.model}}</p>
+            <p>Year: {{droneDetail.year}}</p>
+            <p>Manufacturer: {{droneDetail.manufacturer}}</p>
+            <p>Processor: {{droneDetail.processor}}</p>
+            <p>Camera: {{droneDetail.camera}}</p>
+            <p>Memory: {{droneDetail.memory}}</p>
+          </mat-card>
+        </div>
+
+        <button mat-raised-button type="submit" style="background-color: mediumseagreen; margin: 5px;">Submit</button>
+        <button mat-raised-button type="button" style="background-color: mediumseagreen; margin: 5px;" (click)="resetForm()">Reset</button>
+    </form>
+</div>
+<!-- </mat-card> -->

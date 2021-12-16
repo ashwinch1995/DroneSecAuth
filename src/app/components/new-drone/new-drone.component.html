@@ -1,0 +1,55 @@
+<mat-card>
+    <mat-card-title style="color: mediumseagreen; font-weight: 600;">TRUSTDRONE</mat-card-title>
+    <br>    
+    <mat-card-title style="font-weight: 400;">Drone Identity Access Management</mat-card-title>
+    <br>
+    <form [formGroup]="newDroneForm" (ngSubmit)="submit()">
+        <p style="display: flex;">
+        <mat-form-field appearance="fill" style="width: 49%; display: inline-block;">
+            <mat-label>Model</mat-label>
+            <input matInput placeholder="abc" formControlName="model">
+            <mat-error>Please enter a value</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" style="width: 49%; display: inline-block;">
+            <mat-label>Year</mat-label>
+            <input matInput placeholder="abc" formControlName="year">
+            <mat-error>Please enter a value</mat-error>
+        </mat-form-field>
+    </p>
+        <mat-form-field appearance="fill" style="width: 99%;">
+            <mat-label>Manufacturer</mat-label>
+            <input matInput placeholder="abc" formControlName="manufacturer">
+            <mat-error>Please enter a value</mat-error>
+        </mat-form-field>
+        <p style="display: flex;">
+        <mat-form-field appearance="fill" style="width: 49%; display: inline-block;">
+            <mat-label>Camera</mat-label>
+            <input matInput placeholder="abc" formControlName="camera">
+            <mat-error>Please enter a value</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" style="width: 49%; display: inline-block;">
+            <mat-label>Processor</mat-label>
+            <input matInput placeholder="abc" formControlName="processor">
+            <mat-error>Please enter a value</mat-error>
+        </mat-form-field>
+    </p>
+    <p style="display: flex;">
+        <mat-form-field appearance="fill" style="width: 49%; display: inline-block;">
+            <mat-label>Memory</mat-label>
+            <input matInput placeholder="abc" formControlName="memory">
+            <mat-error>Please enter a value</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" style="width: 49%; display: inline-block;">
+            <mat-label>Other</mat-label>
+            <input matInput placeholder="abc" formControlName="other">
+            <mat-error>Please enter a value</mat-error>
+        </mat-form-field>
+    </p>
+    <mat-form-field appearance="fill" style="width: 99%;">
+        <mat-label>Device ID</mat-label>
+        <input matInput placeholder="abc" formControlName="deviceId">
+        <mat-error>Please enter a value</mat-error>
+    </mat-form-field>
+        <button mat-raised-button type="submit" style="background-color: mediumseagreen; margin: 5px;">Submit</button>
+    </form>
+</mat-card>

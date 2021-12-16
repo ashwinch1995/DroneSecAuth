@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "drone-sec-auth": {
+      "hosting": {
+        "DroneSecAuth": [
+          "drone-sec-auth"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "drone-sec-auth"
+  }
+}

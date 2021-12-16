@@ -1,0 +1,52 @@
+
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false" *ngFor="let mission of missions">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{mission.missionName}}
+      </mat-panel-title>
+      <!-- <mat-panel-description>
+        Currently I am {{panelOpenState ? 'open' : 'closed'}}
+      </mat-panel-description> -->
+    </mat-expansion-panel-header>
+    <p>Mission ID: {{mission.missionId}}</p>
+    <p>Status: {{mission.status}}</p>
+    <p>Source Location: {{mission.source}}</p>
+    <p>Destination Location: {{mission.destination}}</p>
+    <table mat-table [dataSource]="mission['droneIds']" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+        <!-- Position Column -->
+        <ng-container matColumnDef="droneId">
+          <th mat-header-cell *matHeaderCellDef> Drone Id </th>
+          <td mat-cell *matCellDef="let element"> {{element.droneId}} </td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="trustScore">
+          <th mat-header-cell *matHeaderCellDef> Trust Score </th>
+          <td mat-cell *matCellDef="let element"> {{element.trustScore}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="trusted">
+            <th mat-header-cell *matHeaderCellDef> Trusted </th>
+            <td mat-cell *matCellDef="let element"> {{(element.trustScore < 0.5 ? 'No' : 'Yes')}} </td>
+        </ng-container>
+      
+        
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="getChart(row)"></tr>
+      </table>
+
+      <!-- <div> -->        
+    <!-- </div> -->
+    <!-- <p>Drone ID's: {{mission.droneIds}}</p> -->
+  </mat-expansion-panel>
+  <p *ngIf="displayChart">Displaying the Energy levels for {{energyLevelDroneId}}</p>
+<div>
+  <canvas id="myChart" style="height: 500px;"></canvas>
+</div>
+  
